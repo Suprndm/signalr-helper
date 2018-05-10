@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>SignalRHelper.Server</id>
+    <version>1.0.0</version>
+    <authors>NDMCI</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides a signalR server hub with managed connection features</description>
+    <dependencies>
+      <dependency id="Microsoft.AspNetCore.SignalR.Server" Version="1.0.0-rc1-final"/>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="SignalRHelper.Server\bin\release\netcoreapp2.0\SignalRHelper.Server.dll" target="lib\netcoreapp2.0" />
+    <file src="SignalRHelper.Server\bin\release\netcoreapp2.0\SignalRHelper.Server.pdb" target="lib\netcoreapp2.0" />
+    <file src="SignalRHelper.Server\bin\release\netcoreapp2.0\SignalRHelper.Server.xml" target="lib\netcoreapp2.0" />
+  </files>
+</package>

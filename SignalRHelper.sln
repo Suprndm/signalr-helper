@@ -3,15 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRHelper.WebServerTester", "SignalRHelper.WebServerTester\SignalRHelper.WebServerTester.csproj", "{1A622E7A-C443-4419-B25E-AB5F1C0DD6B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRHelper.WebServerTester", "SignalRHelper.WebServerTester\SignalRHelper.WebServerTester.csproj", "{1A622E7A-C443-4419-B25E-AB5F1C0DD6B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRHelper.ClientTester", "SignalRHelper.ClientTester\SignalRHelper.ClientTester.csproj", "{3A02154A-DC4B-4938-9B96-5C27E8DD4582}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRHelper.ClientTester", "SignalRHelper.ClientTester\SignalRHelper.ClientTester.csproj", "{3A02154A-DC4B-4938-9B96-5C27E8DD4582}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRHelper.Server.Tests", "SignalRHelper.Server.Tests\SignalRHelper.Server.Tests.csproj", "{79707D80-CEEA-4446-B6E2-8A79E1C8D20E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRHelper.Server", "SignalRHelper.Server\SignalRHelper.Server.csproj", "{4C8E06F7-40F5-434F-9EED-E1926154DA24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRHelper.Server", "SignalRHelper.Server\SignalRHelper.Server.csproj", "{4C8E06F7-40F5-434F-9EED-E1926154DA24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRHelper.Client", "SignalRHelper.Client\SignalRHelper.Client.csproj", "{2D8C413E-F2C5-44BE-9DDD-BB7102EBBEFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRHelper.Client", "SignalRHelper.Client\SignalRHelper.Client.csproj", "{2D8C413E-F2C5-44BE-9DDD-BB7102EBBEFE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{1CC6605B-0435-47C7-ADE1-9F1D6ED0495B}"
+	ProjectSection(SolutionItems) = preProject
+		SignalRHelper.Client.nuspec = SignalRHelper.Client.nuspec
+		SignalRHelper.Server.nuspec = SignalRHelper.Server.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
