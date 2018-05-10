@@ -8,7 +8,9 @@ namespace SignalRHelper.Server
         {
             Id = id;
             LastPongTime = DateTimeOffset.MinValue;
-            PreviousDelayBetweenPongs =  TimeSpan.MaxValue;
+
+            // Represents a big delay
+            PreviousDelayBetweenPongs =  TimeSpan.FromDays(1);
             ConnectionStatus = ConnectionStatus.Disconnected;
         }
 

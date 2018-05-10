@@ -1,4 +1,4 @@
-﻿namespace SignalRHelper.Server
+﻿namespace SignalRHelper.Client
 {
     public enum ConnectionStatus
     {

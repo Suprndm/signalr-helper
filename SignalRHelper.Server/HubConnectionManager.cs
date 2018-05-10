@@ -13,7 +13,7 @@ namespace SignalRHelper.Server
         private TimeSpan _disturbedDelayBetweenPongs = TimeSpan.FromMilliseconds(6000);
         private TimeSpan _connectionsRefreshFrequency = TimeSpan.FromMilliseconds(1000);
 
-        private Timer _timer;
+        private Timer _connectionRefreshTimer;
 
         public event Action<Client> ClientConnected;
         public event Action<Client> ClientDisconnected;
@@ -22,7 +22,7 @@ namespace SignalRHelper.Server
         private HubConnectionManager()
         {
             _clients = new List<Client>();
-            _timer = new Timer(e => RefreshConnectionsStatus(), null, TimeSpan.FromMilliseconds(0), _connectionsRefreshFrequency);
+            _connectionRefreshTimer = new Timer(e => RefreshConnectionsStatus(), null, TimeSpan.FromMilliseconds(0), _connectionsRefreshFrequency);
         }
 
 
@@ -32,13 +32,13 @@ namespace SignalRHelper.Server
         public void UpdateSettings(TimeSpan healthyDelayBetweenPongs, TimeSpan disturbedDelayBetweenPongs,
             TimeSpan connectionsRefreshFrequency)
         {
-            _timer.Dispose();
+            _connectionRefreshTimer.Dispose();
 
             _healthyDelayBetweenPongs = healthyDelayBetweenPongs;
             _disturbedDelayBetweenPongs = disturbedDelayBetweenPongs;
             _connectionsRefreshFrequency = connectionsRefreshFrequency;
 
-            _timer = new Timer(e => RefreshConnectionsStatus(), null, TimeSpan.FromMilliseconds(0), _connectionsRefreshFrequency);
+            _connectionRefreshTimer = new Timer(e => RefreshConnectionsStatus(), null, TimeSpan.FromMilliseconds(0), _connectionsRefreshFrequency);
         }
 
         public void OnClientConnected(string clientId)
@@ -80,8 +80,8 @@ namespace SignalRHelper.Server
         {
             var timeElapsedTillLastPong = DateTimeOffset.UtcNow - client.LastPongTime;
 
-            var maxDelay = Math.Max(timeElapsedTillLastPong.Milliseconds,
-                client.PreviousDelayBetweenPongs.Milliseconds);
+            var maxDelay = Math.Max(timeElapsedTillLastPong.TotalMilliseconds,
+                client.PreviousDelayBetweenPongs.TotalMilliseconds);
 
             var connectionStatus = ComputeConnectionStatusFromDelay(TimeSpan.FromMilliseconds(maxDelay));
 
