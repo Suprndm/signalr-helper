@@ -6,7 +6,7 @@ namespace SignalRHelper.Server
 {
     public class ManagedHub : Hub
     {
-        protected readonly TimeSpan PingFrequency = TimeSpan.FromMilliseconds(1000);
+        protected TimeSpan PingFrequency = TimeSpan.FromMilliseconds(1000);
 
         public override async Task OnConnectedAsync()
         {
