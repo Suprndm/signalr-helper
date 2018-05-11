@@ -15,6 +15,7 @@ namespace SignalRHelper.Client
         private readonly TimeSpan _connectionDisturbedDelay;
         private readonly TimeSpan _connectionRefreshFrequency;
         private readonly TimeSpan _connectionRetryDelay;
+        private readonly TimeSpan _pingPongFrequency;
         private ConnectionStatus _connectionStatus;
 
         private Timer _connectionRefreshTimer;
@@ -25,9 +26,12 @@ namespace SignalRHelper.Client
 
         public SignalRClient(
             string name, 
-            string baseUrl, int connectionRetryDelayMs = 5000, int connectionTimeoutDelayMs = 6000,
+            string baseUrl,
+            int connectionRetryDelayMs = 5000,
+            int connectionTimeoutDelayMs = 6000,
             int connectionDisturbedDelayMs = 3000, 
-            int connectionRefreshFrequencyMs = 1000)
+            int connectionRefreshFrequencyMs = 1000, 
+            int pingPongFrequencyMs = 1000)
         {
             _name = name;
             _baseUrl = baseUrl;
@@ -35,6 +39,7 @@ namespace SignalRHelper.Client
             _connectionTimeoutDelay = TimeSpan.FromMilliseconds(connectionTimeoutDelayMs);
             _connectionDisturbedDelay = TimeSpan.FromMilliseconds(connectionDisturbedDelayMs);
             _connectionRefreshFrequency = TimeSpan.FromMilliseconds(connectionRefreshFrequencyMs);
+            _pingPongFrequency = TimeSpan.FromMilliseconds(pingPongFrequencyMs);
         }
 
         public void Connect()
@@ -66,7 +71,7 @@ namespace SignalRHelper.Client
                 {
                     _previousDelayBetweenPings = DateTimeOffset.UtcNow - _lastPingTime;
                     _lastPingTime = DateTimeOffset.UtcNow;
-                    await Task.Delay(1000);
+                    await Task.Delay(_pingPongFrequency);
                     try
                     {
                         await HubConnection.SendAsync("Pong");
