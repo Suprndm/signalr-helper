@@ -51,7 +51,6 @@ namespace SignalRHelper.Server
         public void OnClientDisconnected(string clientId)
         {
             var client = GetClientById(clientId);
-            client.ConnectionStatus = ConnectionStatus.Disconnected;
             _clients.Remove(client);
             ClientDisconnected?.Invoke(client);
         }
@@ -111,6 +110,11 @@ namespace SignalRHelper.Server
 
                 client.ConnectionStatus = newConnectionStatus;
                 ClientConnectionStatusChanged?.Invoke(client);
+
+                if (newConnectionStatus == ConnectionStatus.Disconnected)
+                {
+                    OnClientDisconnected(client.Id);
+                }
             }
         }
 

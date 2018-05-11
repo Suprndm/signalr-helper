@@ -107,15 +107,14 @@ namespace SignalRHelper.Server.Tests
 
             // When the client send pongs under healthy delay 
             HubConnectionManager.Instance.OnPongReceived("e");
-            await Task.Delay(500);
+            await Task.Delay(50);
             HubConnectionManager.Instance.OnPongReceived("e");
-            await Task.Delay(500);
+            await Task.Delay(100);
             HubConnectionManager.Instance.OnPongReceived("e");
             await Task.Delay(500);
 
-            // Then no ClientConnectionStatusChanged event should be fired (stayed at disconnected)
-            _eventTester.Received(0).ClientConnectionStatusChanged(Arg.Any<Client>());
-            HubConnectionManager.Instance.OnClientDisconnected("e");
+            // Then client disconnected event should be fired
+            _eventTester.Received(1).ClientDisconnected(Arg.Any<Client>());
         }
     }
 
