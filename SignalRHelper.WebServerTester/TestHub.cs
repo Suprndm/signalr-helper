@@ -9,12 +9,12 @@ namespace SignalRHelper.WebServerTester
 {
     public class TestHub : ManagedHub
     {
-        private readonly TimeSpan _pingFrequency = TimeSpan.FromMilliseconds(1000);
         private readonly Logger _logger;
 
         public TestHub(Logger logger)
         {
             _logger = logger;
+            PingFrequency = TimeSpan.FromMilliseconds(0);
         }
 
         public override async Task OnConnectedAsync()

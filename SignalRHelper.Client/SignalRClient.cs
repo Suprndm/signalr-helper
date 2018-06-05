@@ -124,6 +124,7 @@ namespace SignalRHelper.Client
         private void UpdateConnectionStatus(ConnectionStatus newConnectionStatus)
         {
             if (_connectionStatus == newConnectionStatus) return;
+
             _connectionStatus = newConnectionStatus;
             ConnectionStatusChanged?.Invoke(_connectionStatus);
 

@@ -7,7 +7,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Provides a signalR server hub with managed connection features</description>
     <dependencies>
-      <dependency id="Microsoft.AspNetCore.SignalR" version="1.0.0-rc1-final"/>
+      <dependency id="Microsoft.AspNetCore.SignalR" version="1.0.0"/>
     </dependencies>
   </metadata>
   <files>
